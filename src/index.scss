@@ -1,21 +1,23 @@
 @font-face {
   font-family: "Merriweather";
-  src: url(./assets/fonts/merriweather/Merriweather-Regular.ttf);
+  src: url(./assets/font/merriweather/Merriweather-Regular.ttf);
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url(./assets/fonts/montserrat/Montserrat.ttf);
+  src: url(./assets/font/montserrat/Montserrat.ttf);
 }
-
+@font-face {
+  font-family: "TiltNeon";
+  src: url(./assets/font/tiltneon/TiltNeon.ttf);
+}
 
 @import "./variables.scss";
 
 :root {
-  font-family: Montserrat, sans-serif;
+  font-family: "Montserrat", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color: $black;
   background-color: $white;
 
@@ -26,6 +28,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  margin: 0px;
+  padding: 0px;
+}
 
 @import "./components/navbar/navbar.scss";
 @import "./components/navbar/nav-button/nav-button.scss";
