@@ -1,4 +1,32 @@
-@import url("../../../index.scss");
-.nav-button{
+@import "../../../variables.scss";
+
+.nav-button {
+  display: block;
+  border: none;
+  height: 7vh;
+  width: 10vw;
+  background-color: $white;
+  text-align: center;
+  color: $primary;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.5s;
+  &:hover {
+    color: $white;
     background-color: $primary;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .nav-button {
+    height: 7vh;
+    width: 10vw;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .nav-button {
+    height: 7vh;
+    width: 100vw;
+    border-bottom: 1px solid;
+  }
 }

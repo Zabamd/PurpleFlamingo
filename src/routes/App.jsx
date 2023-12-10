@@ -6,9 +6,9 @@ const App = () => {
       <header>
         <Navbar />
       </header>
-      <body>
-        <h2>App</h2>
-      </body>
+      <main>
+
+      </main>
     </>
   );
 };
