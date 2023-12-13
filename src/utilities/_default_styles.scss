@@ -1,0 +1,25 @@
+@mixin button_style {
+  font-family: TiltNeon;
+  width: 35%;
+  font-size: 26px;
+  background-color: $white;
+  border-radius: 0.75em;
+  border: $primary solid 2px;
+  color: $primary;
+  transition: 0.5s;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+}
+
+@mixin section_style {
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

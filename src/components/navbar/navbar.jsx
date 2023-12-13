@@ -1,4 +1,5 @@
 import NavButton from "./nav-button/nav-button";
+import "./navbar.scss";
 
 const Navbar = () => {
   return (

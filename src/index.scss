@@ -12,7 +12,7 @@
   src: url(./assets/font/tiltneon/TiltNeon.ttf);
 }
 
-@import "./variables.scss";
+@import "./utilities/variables";
 
 :root {
   font-family: "Montserrat", sans-serif;
@@ -32,6 +32,3 @@
   margin: 0px;
   padding: 0px;
 }
-
-@import "./components/navbar/navbar.scss";
-@import "./components/navbar/nav-button/nav-button.scss";
