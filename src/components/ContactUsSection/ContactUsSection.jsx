@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ContactUsSection.scss";
-import messageIcon from "../../assets/icons/message.svg";
+import { BiSend } from "react-icons/bi";
 
 const ContactUsSection = () => {
   const [email, setEmail] = useState("");
@@ -8,23 +8,24 @@ const ContactUsSection = () => {
   const [mailText, setMailText] = useState("");
   const [userMessage, setUserMessage] = useState("");
 
-  const validateEmail = (emailAdress) => {
-    return String(emailAdress)
+  const validateEmail = (emailAddress) => {
+    return String(emailAddress)
       .toLowerCase()
       .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   };
 
-  const onSubmit =  () => {
-    console.log([email, name, mailText]);
-    /*if (validateEmail(email)) {
+  const submitMessage = async (event) => {
+    event.preventDefault();
+    /* if(validateEmail(email)) {
       setUserMessage("Sending");
       try {
-        const resp = await fetch(process.env.ENDPOINT_ADDRESS, {
+        const resp = await fetch(import.meta.env.VITE_EMAIL_ENDPOINT_ADDRESS, {
           method: "POST",
+
           headers: {
-            "X-Auth-Token": process.env.ENDPOINT_API_KEY,
+            "X-Auth-Token": import.meta.env.VITE_ENDPOINT_API_KEY,
             "Content-Type": "application/json",
           },
           body: JSON.stringify([email, name, mailText]),
@@ -47,22 +48,24 @@ const ContactUsSection = () => {
   };
 
   return (
-    <section className="ContactUsSection">
-      <form onSubmit={onSubmit}>
+    <section className="ContactUsSection" id="contactus">
+      <form>
         <input
+          className="contactInput"
           type="email"
           name="contactMail"
           value={email}
-          onChange={() => {
-            setEmail(e.target.value);
+          onChange={(event) => {
+            setEmail(event.target.value);
           }}
         />
         <input
+          className="contactInput"
           type="text"
           name="contactName"
           value={name}
-          onChange={() => {
-            setName(e.target.value);
+          onChange={(event) => {
+            setName(event.target.value);
           }}
         />
         <textarea
@@ -71,11 +74,13 @@ const ContactUsSection = () => {
           cols="30"
           rows="10"
           value={mailText}
-          onChange={() => {
-            setMailText(e.target.value);
+          onChange={(event) => {
+            setMailText(event.target.value);
           }}
         ></textarea>
-        <button type="submit">{messageIcon} Sent</button>
+        <button onClick={submitMessage}>
+          <BiSend /> Sent
+        </button>
         <p
           className="inputMessage"
           style={userMessage ? { display: "none" } : { display: "block" }}

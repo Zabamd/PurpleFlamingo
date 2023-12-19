@@ -9,14 +9,14 @@ import Footer from "../components/footer/footer.jsx";
 const LandingPage = () => {
   return (
     <>
-        <Navbar />
+      <Navbar />
       <main className="LandingPageMain">
         <LandingImageSection />
         <OurGoalsSection />
         <FeaturedProjects />
         <ContactUsSection />
       </main>
-        <Footer />
+      <Footer />
     </>
   );
 };

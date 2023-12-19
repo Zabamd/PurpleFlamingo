@@ -1,6 +1,4 @@
-import "./FeaturedProjects.scss"
+import "./FeaturedProjects.scss";
 
-const FeaturedProjects = () => {
-
-}
+const FeaturedProjects = () => {};
 export default FeaturedProjects;

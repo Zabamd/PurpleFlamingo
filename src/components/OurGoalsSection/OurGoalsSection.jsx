@@ -3,16 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 const OurGoalsSection = () => {
   const navigation = useNavigate();
-  const changeRoute = () => {
-    navigation("/discover");
-  };
 
   return (
     <section className="ourGoalsSection">
       <div className="AboutUs">
         <h3>
           Help People
-          <br /> Achive their dreams
+          <br /> Achieve their dreams
         </h3>
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -25,7 +22,13 @@ const OurGoalsSection = () => {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
-        <button onClick="#contact">Contact US</button>
+        <button
+          onClick={() => {
+            navigation("/#contactus");
+          }}
+        >
+          Contact US
+        </button>
       </div>
       <div className="OurGoals">
         <div className="goalsWrapper">
@@ -40,7 +43,13 @@ const OurGoalsSection = () => {
             <li>Goal_8</li>
           </ul>
         </div>
-        <button onClick={changeRoute}>Discover projects</button>
+        <button
+          onClick={() => {
+            navigation("/discover");
+          }}
+        >
+          Discover projects
+        </button>
       </div>
     </section>
   );
