@@ -1,7 +1,13 @@
+import Navbar from "../components/navbar/navbar.jsx";
+import Footer from "../components/footer/footer.jsx";
+
 const Login = () => {
     return (
-      <div className="Login">
-      </div>
+        <>
+        <Navbar />
+        <main className="LoginPageMain"></main>
+        <Footer />
+        </>
     )
   }
 

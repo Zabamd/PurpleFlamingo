@@ -1,7 +1,14 @@
+import Navbar from "../components/navbar/navbar.jsx";
+import Footer from "../components/footer/footer.jsx";
+
 const Signup = () => {
     return (
-      <div className="Signup">
-      </div>
+        <>
+            <Navbar />
+            <main className="SignUpPageMain">
+            </main>
+            <Footer />
+        </>
     )
   }
 

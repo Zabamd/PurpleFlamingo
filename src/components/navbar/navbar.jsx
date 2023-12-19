@@ -3,7 +3,7 @@ import "./navbar.scss";
 
 const Navbar = () => {
   return (
-    <>
+    <header>
       <nav className="navbar">
         <ul className="list">
           <li className="pageLogo">
@@ -20,7 +20,7 @@ const Navbar = () => {
           </li>
         </ul>
       </nav>
-    </>
+    </header>
   );
 };
 

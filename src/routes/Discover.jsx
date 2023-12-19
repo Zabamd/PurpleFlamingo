@@ -1,7 +1,15 @@
+import Navbar from "../components/navbar/navbar.jsx";
+import Footer from "../components/footer/footer.jsx";
+
 const Discover = () => {
     return (
-      <div className="Discover">
-      </div>
+        <>
+        <Navbar />
+    <main className="DiscoveryPageMain">
+    </main>
+    <Footer />
+    </>
+
     )
   }
 

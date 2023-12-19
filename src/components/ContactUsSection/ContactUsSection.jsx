@@ -16,8 +16,9 @@ const ContactUsSection = () => {
       );
   };
 
-  const onSubmit = async () => {
-    if (validateEmail(email)) {
+  const onSubmit =  () => {
+    console.log([email, name, mailText]);
+    /*if (validateEmail(email)) {
       setUserMessage("Sending");
       try {
         const resp = await fetch(process.env.ENDPOINT_ADDRESS, {
@@ -42,7 +43,7 @@ const ContactUsSection = () => {
       }
     } else {
       setUserMessage("Incorrect email address");
-    }
+    }*/
   };
 
   return (
