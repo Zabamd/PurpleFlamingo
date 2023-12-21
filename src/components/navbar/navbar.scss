@@ -3,22 +3,25 @@
 .navbar {
   height: 7vh;
   width: 100vw;
-  box-shadow: $primary 0px 10px 15px;
+  box-shadow: $primary 0 10px 15px;
 
   .list {
     vertical-align: middle;
     padding-left: 10vw;
     padding-right: 10vw;
-    .element {
+    .elementDesktop {
       display: inline;
+      float: right;
+    }
+    .elementMobile{
+      display: none;
       float: right;
     }
     .pageLogo {
       display: inline;
       float: left;
-      display: block;
       color: $primary;
-      font-family: TiltNeon;
+      font-family: TiltNeon, serif;
       font-size: 26px;
       font-weight: bold;
       .wrapper {
@@ -34,17 +37,20 @@
 
 @media only screen and (max-width: 768px) {
   .navbar {
-    height: 28vh;
     .list {
-      padding-left: 0vw;
-      padding-right: 0vw;
-      .element {
-        float: none;
-        width: 100vw;
+      padding-left: 0;
+      padding-right: 0;
+      .elementDesktop {
+        display: none;
+      }
+      .elementMobile{
+        display: inline;
+        width: 30vw;
+
       }
       .pageLogo {
         float: none;
-        width: 100vw;
+        width: 30vw;
         border-bottom: 1px solid;
       }
     }

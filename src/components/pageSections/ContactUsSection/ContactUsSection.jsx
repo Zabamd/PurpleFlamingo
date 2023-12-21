@@ -18,19 +18,22 @@ const ContactUsSection = () => {
   };
 
   const submitMessage = async () => {
-   // event.preventDefault();
-    try{
-      const response = await fetch(import.meta.env.VITE_EMAIL_ENDPOINT_ADDRESS,{
-        method:"POST",
-        headers:{
-          authToken:import.meta.env.VITE_ENDPOINT_API_KEY
-        },
-        body:{
-          message:"Random Text"
+    // event.preventDefault();
+    try {
+      const response = await fetch(
+        import.meta.env.VITE_EMAIL_ENDPOINT_ADDRESS,
+        {
+          method: "POST",
+          headers: {
+            authToken: import.meta.env.VITE_ENDPOINT_API_KEY,
+          },
+          body: {
+            message: "Random Text",
+          },
         }
-      })
+      );
       console.log(response);
-    }catch (error){
+    } catch (error) {
       console.log(error);
     }
     /*
@@ -61,9 +64,7 @@ const ContactUsSection = () => {
 
   return (
     <section className="contactUsSection" id="contactUs">
-      <h3 className="header">
-        Contact Us!
-      </h3>
+      <h3 className="header">Contact Us!</h3>
       <form className="formContainer" onSubmit="return false">
         <input
           className="contactInput"

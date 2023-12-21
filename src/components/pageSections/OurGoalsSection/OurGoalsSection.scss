@@ -1,8 +1,9 @@
-@import "../../utilities/default_styles";
+@import "../../../utilities/default_styles";
 
 .ourGoalsSection {
   background-color: $tertiary;
   @include section_style;
+
   .AboutUs {
     width: 35%;
     color: $white;
@@ -39,7 +40,7 @@
         padding: 26px 26px 25px;
 
         li {
-          font-family: TiltNeon;
+          font-family: TiltNeon, serif;
           width: 10%;
           height: 6rem;
           font-size: 26px;
@@ -52,12 +53,12 @@
     }
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   .ourGoalsSection {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 140vh;
+    height: 100vh;
     .AboutUs {
       width: 100%;
       padding: 5%;

@@ -1,5 +1,5 @@
 import "./LandingImageSection.scss";
-import LandingImage from "../../assets/images/landingPage.svg";
+import LandingImage from "../../../assets/images/landingPage.svg";
 import { useNavigate } from "react-router-dom";
 
 const LandingImageSection = () => {
