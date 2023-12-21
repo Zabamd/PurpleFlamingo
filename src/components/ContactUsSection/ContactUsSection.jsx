@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./ContactUsSection.scss";
 import { BiSend } from "react-icons/bi";
+import "./ContactUsSection.scss";
 
 const ContactUsSection = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +8,7 @@ const ContactUsSection = () => {
   const [mailText, setMailText] = useState("");
   const [userMessage, setUserMessage] = useState("");
 
+  /// Move to Backend
   const validateEmail = (emailAddress) => {
     return String(emailAddress)
       .toLowerCase()
@@ -16,21 +17,34 @@ const ContactUsSection = () => {
       );
   };
 
-  const submitMessage = async (event) => {
-    event.preventDefault();
-    /* if(validateEmail(email)) {
+  const submitMessage = async () => {
+   // event.preventDefault();
+    try{
+      const response = await fetch(import.meta.env.VITE_EMAIL_ENDPOINT_ADDRESS,{
+        method:"POST",
+        headers:{
+          authToken:import.meta.env.VITE_ENDPOINT_API_KEY
+        },
+        body:{
+          message:"Random Text"
+        }
+      })
+      console.log(response);
+    }catch (error){
+      console.log(error);
+    }
+    /*
       setUserMessage("Sending");
       try {
         const resp = await fetch(import.meta.env.VITE_EMAIL_ENDPOINT_ADDRESS, {
           method: "POST",
-
           headers: {
-            "X-Auth-Token": import.meta.env.VITE_ENDPOINT_API_KEY,
+            "authToken": import.meta.env.VITE_ENDPOINT_API_KEY,
             "Content-Type": "application/json",
           },
           body: JSON.stringify([email, name, mailText]),
         });
-        if (resp.status === 200) {
+        if (resp.body["status"] === "Corrent ") {
           setEmail("");
           setName("");
           setMailText("");
@@ -42,19 +56,22 @@ const ContactUsSection = () => {
         console.log(err);
         setUserMessage("Server Connection Error");
       }
-    } else {
-      setUserMessage("Incorrect email address");
-    }*/
+    */
   };
 
   return (
-    <section className="ContactUsSection" id="contactus">
-      <form>
+    <section className="contactUsSection" id="contactUs">
+      <h3 className="header">
+        Contact Us!
+      </h3>
+      <form className="formContainer" onSubmit="return false">
         <input
           className="contactInput"
           type="email"
           name="contactMail"
+          placeholder="Email Adress:"
           value={email}
+          required
           onChange={(event) => {
             setEmail(event.target.value);
           }}
@@ -64,22 +81,23 @@ const ContactUsSection = () => {
           type="text"
           name="contactName"
           value={name}
+          placeholder="Name:"
+          required
           onChange={(event) => {
             setName(event.target.value);
           }}
         />
         <textarea
-          name="contactMessage"
-          id=""
-          cols="30"
-          rows="10"
+          className="contactMessage"
           value={mailText}
+          placeholder="Message:"
+          required
           onChange={(event) => {
             setMailText(event.target.value);
           }}
         ></textarea>
-        <button onClick={submitMessage}>
-          <BiSend /> Sent
+        <button onClick={submitMessage} className="submitButton">
+          <BiSend /> Submit
         </button>
         <p
           className="inputMessage"

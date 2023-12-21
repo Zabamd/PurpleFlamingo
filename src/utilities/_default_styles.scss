@@ -1,3 +1,15 @@
+$primary: #6f2dbd;
+$secondary: #a663cc;
+$tertiary: #b298dc;
+$blue-gray: #b8d0eb;
+$celeste: #b9faf8;
+$black: #212427;
+$white: #faf5ff;
+$info: #5837fc;
+$correct: #8cfa5f;
+$error: #ff435b;
+
+
 @mixin button_style {
   font-family: TiltNeon;
   width: 35%;
@@ -22,4 +34,25 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+@mixin input_styling{
+  margin-bottom: 2em;
+  font-size: 16px;
+  color:$white;
+  background-color: $tertiary;
+  padding: 5px;
+  transition: all 0.25s linear;
+  &:focus, &:hover {
+    background-color: $white;
+    color: $tertiary;
+
+    &::placeholder {
+      color: $tertiary;
+    }
+  }
+  &::placeholder{
+    font-size: 16px;
+    color:$white;
+  }
 }

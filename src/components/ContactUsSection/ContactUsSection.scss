@@ -1,2 +1,40 @@
 @import "../../utilities/default_styles";
-@import "../../utilities/variables";
+
+.contactUsSection{
+  @include section_style;
+  flex-direction: column;
+
+  .header{
+    font-family: TiltNeon, serif;
+    font-size: 3em;
+    padding-bottom: 1em;
+    color: $secondary;
+  }
+  .formContainer{
+    width: 50vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $tertiary;
+    border-radius: 0.75em;
+
+    .contactInput{
+      @include input_styling;
+      width: 70%;
+      border: none;
+      border-bottom: $white solid 2px;
+    }
+    .contactMessage{
+      @include input_styling;
+      border: 2px solid $white;
+      width: 70%;
+      height: 30%;
+      resize: none;
+    }
+    .submitButton{
+      @include button_style;
+    }
+  }
+}
