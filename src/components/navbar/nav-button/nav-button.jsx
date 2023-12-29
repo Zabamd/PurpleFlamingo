@@ -1,17 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./nav-button.scss";
 
-const NavButton = ({ icon = null, path, text }) => {
-  const navigate = useNavigate();
-  const routeChange = () => {
-    navigate(path);
-  };
-
+const NavButton = ({ path, text }) => {
   return (
-    <button className="nav-button" onClick={routeChange}>
-      {icon && <div className="icon_container">props.icon</div>}
+    <Link className="nav-button" to={path}>
       {text}
-    </button>
+    </Link>
   );
 };
 export default NavButton;

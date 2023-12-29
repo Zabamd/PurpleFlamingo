@@ -1,7 +1,6 @@
 @import "../../../utilities/default_styles";
 
 .nav-button {
-  display: block;
   border: none;
   height: 7vh;
   width: 10vw;
@@ -13,6 +12,10 @@
   font-size: 16px;
   transition: 0.5s;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
   &:hover {
     color: $white;
     background-color: $primary;

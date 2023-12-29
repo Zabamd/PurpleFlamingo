@@ -24,6 +24,7 @@
       font-family: TiltNeon, serif;
       font-size: 26px;
       font-weight: bold;
+
       .wrapper {
         display: flex;
         flex-direction: column;
@@ -37,20 +38,18 @@
 
 @media only screen and (max-width: 768px) {
   .navbar {
+  overflow: hidden;
     .list {
-      padding-left: 0;
-      padding-right: 0;
       .elementDesktop {
         display: none;
       }
       .elementMobile{
         display: inline;
-        width: 30vw;
-
+        float: right;
       }
       .pageLogo {
-        float: none;
-        width: 30vw;
+        float: left;
+        display: inline;
         border-bottom: 1px solid;
       }
     }
