@@ -1,0 +1,54 @@
+@import "../utilities/default_styles";
+
+.ErrorPageMain {
+  @include section_style;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .errorContainer {
+    background-color: $tertiary;
+    padding: 2rem;
+    border-radius: 0.75em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    .errorCode {
+      font-family: TiltNeon, serif;
+      font-size: 5em;
+      color: $primary;
+      margin: 0;
+    }
+
+    .errorMessage {
+      font-family: Merriweather, serif;
+      font-size: 2em;
+      color: $secondary;
+      margin: 0.5rem 0;
+    }
+
+    .errorDescription {
+      font-family: Merriweather, serif;
+      font-size: 1.25em;
+      color: $black;
+      margin-bottom: 1.5rem;
+    }
+
+    .errorButton {
+      @include button_style;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-size: 1.25em;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .ErrorPageMain {
+    padding: 2rem 1rem;
+
+    .errorContainer {
+      padding: 1rem;
+    }
+  }
+}

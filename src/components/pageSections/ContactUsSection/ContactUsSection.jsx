@@ -65,7 +65,7 @@ const ContactUsSection = () => {
   return (
     <section className="formSection" id="contactUs">
       <h3 className="header">Contact Us!</h3>
-      <form className="formContainer" onSubmit="return false">
+      <form className="formContainer" onSubmit={submitMessage}>
         <input
           className="formInput"
           type="email"
@@ -97,7 +97,7 @@ const ContactUsSection = () => {
             setMailText(event.target.value);
           }}
         ></textarea>
-        <button onClick={submitMessage} className="formButton">
+        <button type="submit" className="formButton">
           <BiSend /> Submit
         </button>
         <p

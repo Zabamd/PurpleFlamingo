@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
 import "./footer.scss";
+import routes from "../../utilities/_routes";
 
 const Footer = () => {
-  const routes = [
-    { name: "Sign up", path: "/signup" },
-    { name: "Log in", path: "/login" },
-    { name: "Discover", path: "/discover" },
-    { name: "Home", path: "/" },
-  ];
+
   return (
     <footer className="footer">
       <div className="footerContent">

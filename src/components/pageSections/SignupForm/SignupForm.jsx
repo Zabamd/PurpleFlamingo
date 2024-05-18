@@ -12,6 +12,20 @@ const SignupForm = () => {
   const [birthday, setBirthday] = useState("");
   const [userMessage, setUserMessage] = useState("");
 
+  const calculateAge = (birthday) => {
+    const birthDate = new Date(birthday);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  };
+
   const onFormSubmit = (event) => {
     event.preventDefault();
     if (email !== repeatEmail) {
@@ -20,6 +34,10 @@ const SignupForm = () => {
     }
     if (password !== repeatPassword) {
       setUserMessage("Passwords do not match");
+      return;
+    }
+    if (calculateAge(birthday) < 18) {
+      setUserMessage("You must be at least 18 years old to sign up");
       return;
     }
     console.log(email, password, firstName, secondName, birthday);

@@ -1,15 +1,8 @@
 import NavButton from "./nav-button/nav-button";
 import "./navbar.scss";
-
+import routes from "../../utilities/_routes";
 const Navbar = () => {
   const location = window.location.pathname;
-  const routes = [
-    { name: "Sign up", path: "/signup" },
-    { name: "Log in", path: "/login" },
-    { name: "Discover", path: "/discover" },
-    { name: "Home", path: "/" },
-  ];
-
   return (
     <header>
       <nav className="navbar">
