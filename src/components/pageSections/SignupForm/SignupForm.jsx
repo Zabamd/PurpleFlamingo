@@ -1,3 +1,4 @@
+import CryptoJS from "crypto-js";
 import { useState } from "react";
 import { BiSend } from "react-icons/bi";
 import "../../../style/form.scss";
@@ -26,7 +27,7 @@ const SignupForm = () => {
     return age;
   };
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
     if (email !== repeatEmail) {
       setUserMessage("Emails do not match");
@@ -40,7 +41,29 @@ const SignupForm = () => {
       setUserMessage("You must be at least 18 years old to sign up");
       return;
     }
-    console.log(email, password, firstName, secondName, birthday);
+
+    const hashedPassword = CryptoJS.SHA256(password).toString();
+   
+    let response = null;
+    try {
+      response = await fetch(signupRoute, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authToken: authKey,
+        },
+        body: JSON.stringify({
+          email: email,
+          password: hashedPassword,
+          firstName: firstName,
+          secondName: secondName,
+          birtday: birthday,
+        }),
+      });
+    } catch (error) {
+      setUserMessage("Server Connection Error");
+      return;
+    }
   };
 
   return (

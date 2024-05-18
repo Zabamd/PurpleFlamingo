@@ -1,13 +1,15 @@
 import Navbar from "../components/navbar/navbar.jsx";
 import Footer from "../components/footer/footer.jsx";
-import "../style/ErrorPage.scss";
 import { Link } from "react-router-dom";
+import "../style/ErrorPage.scss";
+import "../style/page.scss";
+
 
 const ErrorPage = () => {
   return (
     <>
       <Navbar />
-      <main className="ErrorPageMain">
+      <main className="ErrorPageMain pageDefault">
         <div className="errorContainer">
           <h1 className="errorCode">404</h1>
           <h2 className="errorMessage">Page Not Found</h2>

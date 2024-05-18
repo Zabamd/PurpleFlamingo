@@ -1,5 +1,7 @@
+import CryptoJS from "crypto-js";
 import { useState } from "react";
 import { BiSend } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 import "../../../style/form.scss";
 
 const LoginForm = () => {
@@ -7,9 +9,33 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [userMessage, setUserMessage] = useState("");
 
-  const onFormSubmit = (event) => {
+  const navigate = useNavigate();
+  const authKey = import.meta.env.VITE_AUTH_TOKEN;
+  const loginRoute = import.meta.env.VITE_LOGIN_ROUTE;
+
+  const onFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(email, password);
+    const hashedPassword = CryptoJS.SHA256(password).toString();
+    let response = null;
+    try {
+      response = await fetch(loginRoute, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authToken: authKey,
+        },
+        body: JSON.stringify({ reqEmail: email, reqPassword: hashedPassword }),
+      });
+      console.log(response);
+    } catch (error) {
+      setUserMessage("Server Conncetion Error");
+      return;
+    }
+    if (response !== null && response.status === 200) {
+      navigate("/discover");
+    } else {
+      setUserMessage("Invalid email or password");
+    }
   };
 
   return (

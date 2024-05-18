@@ -2,9 +2,6 @@
 
 .ErrorPageMain {
   @include section_style;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 
   .errorContainer {
