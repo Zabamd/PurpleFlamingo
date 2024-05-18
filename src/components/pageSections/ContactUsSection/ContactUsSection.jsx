@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BiSend } from "react-icons/bi";
-import "./ContactUsSection.scss";
+import "../../../style/form.scss";
 
 const ContactUsSection = () => {
   const [email, setEmail] = useState("");
@@ -63,13 +63,13 @@ const ContactUsSection = () => {
   };
 
   return (
-    <section className="contactUsSection" id="contactUs">
+    <section className="formSection" id="contactUs">
       <h3 className="header">Contact Us!</h3>
       <form className="formContainer" onSubmit="return false">
         <input
-          className="contactInput"
+          className="formInput"
           type="email"
-          name="contactMail"
+          name="formMail"
           placeholder="Email Adress:"
           value={email}
           required
@@ -78,9 +78,9 @@ const ContactUsSection = () => {
           }}
         />
         <input
-          className="contactInput"
+          className="formInput"
           type="text"
-          name="contactName"
+          name="formName"
           value={name}
           placeholder="Name:"
           required
@@ -89,7 +89,7 @@ const ContactUsSection = () => {
           }}
         />
         <textarea
-          className="contactMessage"
+          className="formMessage"
           value={mailText}
           placeholder="Message:"
           required
@@ -97,7 +97,7 @@ const ContactUsSection = () => {
             setMailText(event.target.value);
           }}
         ></textarea>
-        <button onClick={submitMessage} className="submitButton">
+        <button onClick={submitMessage} className="formButton">
           <BiSend /> Submit
         </button>
         <p
