@@ -1,1 +1,45 @@
 @import "../../utilities/default_styles";
+
+.footer {
+  background-color: $primary;
+  color: $white;
+  text-align: center;
+  padding: 2em 0;
+  width: 100%;
+
+  .footerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .footerNav {
+      display: flex;
+      justify-content: center;
+
+      .footerLink {
+        @include button_style;
+        margin: 0 1em;
+        text-decoration: none;
+        width: 7.5rem;
+
+        &:hover {
+          background-color: $primary;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .footerContent {
+      .footerNav {
+        flex-direction: column;
+
+        .footerLink {
+          margin: 0.5em 0;
+        }
+      }
+    }
+  }
+}

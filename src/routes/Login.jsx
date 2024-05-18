@@ -7,8 +7,10 @@ import Footer from "../components/footer/footer.jsx";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userMessage, setUserMessage] = useState("");
 
-  onFormSubmit = () => {
+  onFormSubmit = (event) => {
+    event.preventDefault();
     console.log(email, password);
   };
 
@@ -40,12 +42,12 @@ const Login = () => {
               setPassword(event.target.value);
             }}
           />
-          <button onClick={submitMessage} className="submitButton">
+          <button type="submit"  className="submitButton">
             <BiSend /> Submit
           </button>
           <p
             className="inputMessage"
-            style={userMessage ? { display: "none" } : { display: "block" }}
+            style={userMessage ? { display: "block" } : { display: "none" }}
           >
             {userMessage}
           </p>

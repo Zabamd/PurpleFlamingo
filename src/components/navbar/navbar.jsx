@@ -1,5 +1,4 @@
 import NavButton from "./nav-button/nav-button";
-import Hamburger from "./hamburger/hamburger.jsx";
 import "./navbar.scss";
 
 const Navbar = () => {
@@ -28,7 +27,6 @@ const Navbar = () => {
             }
           })}
           <li className="elementMobile">
-            <Hamburger routes={routes} />
           </li>
         </ul>
       </nav>
