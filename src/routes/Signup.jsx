@@ -1,8 +1,14 @@
-const Signup = () => {
-    return (
-      <div className="Signup">
-      </div>
-    )
-  }
+import Navbar from "../components/navbar/navbar.jsx";
+import Footer from "../components/footer/footer.jsx";
 
-  export default Signup
+const Signup = () => {
+  return (
+    <>
+      <Navbar />
+      <main className="SignUpPageMain"></main>
+      <Footer />
+    </>
+  );
+};
+
+export default Signup;

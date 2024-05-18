@@ -1,0 +1,79 @@
+@import "../../../utilities/default_styles";
+
+.landingPageImage {
+  @include section_style;
+
+  .infoWrapper {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    .landingImageButton {
+      @include button_style;
+    }
+    .landingImageText {
+      font-family: Merriweather;
+      color: $black;
+      font-size: 16px;
+      align-self: center;
+      text-align: center;
+      padding-left: 10%;
+      padding-right: 10%;
+      &::first-letter {
+        color: $primary;
+        font-size: 26px;
+        font-weight: bold;
+      }
+    }
+  }
+  .imageWrapper {
+    width: 50%;
+    padding: 5%;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .landingPageImage {
+    .infoWrapper {
+      padding: 0%;
+      .landingImageButton {
+        width: 45%;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .landingPageImage {
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 7%;
+    .infoWrapper {
+      width: 100%;
+      padding: 0%;
+    }
+    .imageWrapper {
+      width: 90%;
+      padding: 0% 0% 5% 0;
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  .landingPageImage {
+    .infoWrapper {
+      width: 100%;
+      padding: 0%;
+      .landingImageButton {
+        width: 55%;
+      }
+    }
+    .imageWrapper {
+      width: 90%;
+      padding: 25% 0 5% 0;
+    }
+  }
+}

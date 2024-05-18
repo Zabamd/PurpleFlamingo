@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./routes/App";
+import LandingPage from "./routes/LandingPage";
 import Discover from "./routes/Discover";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
@@ -12,7 +12,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <LandingPage />,
     errorElement: <ErrorPage />,
   },
   {
