@@ -6,6 +6,8 @@
   text-align: center;
   padding: 2em 0;
   width: 100%;
+  bottom: 0;
+  left: 0;
 
   .footerContent {
     display: flex;
@@ -22,11 +24,6 @@
         margin: 0 1em;
         text-decoration: none;
         width: 7.5rem;
-
-        &:hover {
-          background-color: $primary;
-          color: $white;
-        }
       }
     }
   }

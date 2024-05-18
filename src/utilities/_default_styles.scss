@@ -9,7 +9,6 @@ $info: #5837fc;
 $correct: #8cfa5f;
 $error: #ff435b;
 
-
 @mixin button_style {
   font-family: TiltNeon;
   width: 35%;
@@ -36,14 +35,15 @@ $error: #ff435b;
   align-items: center;
 }
 
-@mixin input_styling{
+@mixin input_styling {
   margin-bottom: 2em;
   font-size: 16px;
-  color:$white;
+  color: $white;
   background-color: $tertiary;
   padding: 5px;
   transition: all 0.25s linear;
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     background-color: $white;
     color: $tertiary;
 
@@ -51,7 +51,15 @@ $error: #ff435b;
       color: $tertiary;
     }
   }
-  &::placeholder{
+  &::placeholder {
     font-size: 16px;
   }
+}
+@mixin page_style {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5vh;
 }
