@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [userMessage, setUserMessage] = useState("");
 
-  onFormSubmit = (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     console.log(email, password);
   };
