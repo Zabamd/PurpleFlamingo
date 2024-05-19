@@ -1,7 +1,10 @@
 import NavButton from "./nav-button/nav-button";
 import "./navbar.scss";
-import routes from "../../utilities/_routes";
+import { RoutesContext } from "../../context/RoutesContext";
+import { useContext } from "react";
+
 const Navbar = () => {
+  const routes = useContext(RoutesContext);
   const location = window.location.pathname;
   return (
     <header>
@@ -19,8 +22,6 @@ const Navbar = () => {
               );
             }
           })}
-          <li className="elementMobile">
-          </li>
         </ul>
       </nav>
     </header>

@@ -9,8 +9,10 @@ import UserProfile from "./routes/UserProfile";
 import CreateActionPage from "./routes/CreateAction";
 import ActionPage from "./routes/ActionPage";
 import UserPage from "./routes/UserPage";
-
 import "./index.scss";
+
+import { RoutesProvider } from "./context/RoutesContext";
+import { UserProvider } from "./context/UserContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -58,6 +60,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <UserProvider>
+      <RoutesProvider>
+        <RouterProvider router={router} />
+      </RoutesProvider>
+    </UserProvider>
   </React.StrictMode>
 );

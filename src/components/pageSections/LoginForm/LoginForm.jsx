@@ -2,9 +2,10 @@ import CryptoJS from "crypto-js";
 import { useState } from "react";
 import { BiSend } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import User from "../../../models/User";
 import "../../../style/form.scss";
 
-const LoginForm = () => {
+const LoginForm = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userMessage, setUserMessage] = useState("");
@@ -26,13 +27,14 @@ const LoginForm = () => {
         },
         body: JSON.stringify({ reqEmail: email, reqPassword: hashedPassword }),
       });
-      console.log(response);
     } catch (error) {
       setUserMessage("Server Conncetion Error");
       return;
     }
     if (response !== null && response.status === 200) {
-      navigate("/discover");
+      const user = new User(response);
+      setUser(user);
+      navigate("/profile");
     } else {
       setUserMessage("Invalid email or password");
     }

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import "./footer.scss";
-import routes from "../../utilities/_routes";
+import { RoutesContext } from "../../context/RoutesContext";
+import { useContext } from "react";
 
 const Footer = () => {
+  const routes = useContext(RoutesContext);
 
   return (
     <footer className="footer">
