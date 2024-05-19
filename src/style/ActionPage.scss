@@ -1,0 +1,67 @@
+@import "../utilities/default_styles";
+
+.actionPage {
+  @include section_style;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 5rem;
+
+  .actionTitle {
+    font-family: Merriweather;
+    color: $primary;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .createdBy {
+    font-family: Arial, sans-serif;
+    color: $black;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .actionImages {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .actionDescription {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    color: $black;
+    font-size: 18px;
+    margin-bottom: 2rem;
+  }
+
+  .actionFunding {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: $black;
+    font-size: 18px;
+
+    p {
+      margin: 0.5rem 0;
+    }
+
+    .supportButton {
+      @include button_style;
+      font-size: 18px;
+      padding: 1rem 2rem;
+    }
+  }
+}

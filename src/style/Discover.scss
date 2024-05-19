@@ -1,0 +1,45 @@
+@import "../utilities/default_styles";
+
+.discoverPage {
+  @include section_style;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+
+
+  .discoverHeader {
+    font-family: Merriweather;
+    color: $primary;
+    font-size: 32px;
+    margin-top: 15vh;
+    margin-bottom: 1rem; // Increase space below header
+  }
+
+  .actionsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    width: 80%;
+    margin-bottom: 2rem; // Increase space below actions grid
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+    margin-top: 1rem;
+
+    .pageButton {
+      @include button_style;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      &.active {
+        background-color: $primary;
+        color: $white;
+        border: none;
+      }
+    }
+  }
+}

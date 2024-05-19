@@ -43,7 +43,7 @@ const SignupForm = () => {
     }
 
     const hashedPassword = CryptoJS.SHA256(password).toString();
-   
+
     let response = null;
     try {
       response = await fetch(signupRoute, {
@@ -68,11 +68,16 @@ const SignupForm = () => {
 
   return (
     <section className="formSection">
-      <h3 className="header">Sign Up</h3>
+      <h3
+        className="header"
+        style={{ paddingBottom: "0.5rem", marginTop: "1rem" }}
+      >
+        Sign Up
+      </h3>
       <form
         className="formContainer"
         onSubmit={onFormSubmit}
-        style={{ height: "90%" }}
+        style={{ height: "90%", marginBottom: "3rem" }}
       >
         <input
           className="formInput"

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import "./footer.scss";
 import { RoutesContext } from "../../context/RoutesContext";
 import { useContext } from "react";
+import "./footer.scss";
 
 const Footer = () => {
   const routes = useContext(RoutesContext);
