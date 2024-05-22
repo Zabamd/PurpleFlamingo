@@ -1,10 +1,10 @@
 import CurrencyInput from "react-currency-input-field";
 import React, { useContext, useState } from "react";
+import { UserContext } from "../context/UserContext.jsx";
 import Navbar from "../components/navbar/navbar.jsx";
 import Footer from "../components/footer/footer.jsx";
 import "../style/page.scss";
 import "../style/form.scss";
-import { UserContext } from "../context/UserContext.jsx";
 
 const CreateActionPage = () => {
   const [title, setTitle] = useState("");
@@ -13,6 +13,9 @@ const CreateActionPage = () => {
   const [images, setImages] = useState([]);
   const [startDate, setStartDate] = useState("");
   const [finishDate, setFinishDate] = useState("");
+
+  const createActionRoute = import.meta.env.VITE_CREATE_ACTION;
+  const authKey = import.meta.env.VITE_AUTH_TOKEN;
 
   const { user } = useContext(UserContext);
 
@@ -30,25 +33,27 @@ const CreateActionPage = () => {
     formData.append("goal", goal);
     formData.append("startDate", startDate);
     formData.append("finishDate", finishDate);
+    formData.append("userID", user.userID);
 
     images.forEach((image, index) => {
       formData.append(`image${index}`, image);
     });
 
     try {
-      const response = await fetch("/api/actions", {
+      const response = await fetch(`${createActionRoute}`, {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authToken: authKey,
+        },
         body: {
           postData: formData,
-          userID: user.userID,
         },
       });
 
       if (response.ok) {
-        // Handle success
         console.log("Action created successfully");
       } else {
-        // Handle error
         console.error("Failed to create action");
       }
     } catch (error) {

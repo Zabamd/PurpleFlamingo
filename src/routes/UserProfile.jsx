@@ -12,154 +12,38 @@ const ProfilePage = () => {
   const [actions, setActions] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const actionsPerPage = 6;
-  const mockActions = [
-    {
-      actionId: 1,
-      title: "Clean the Beach",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 500,
-      goal: 1000,
-    },
-    {
-      actionId: 2,
-      title: "Plant Trees",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 300,
-      goal: 800,
-    },
-    {
-      actionId: 3,
-      title: "Build a Playground",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 200,
-      goal: 1500,
-    },
-    {
-      actionId: 4,
-      title: "Community Garden",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 400,
-      goal: 1000,
-    },
-    {
-      actionId: 5,
-      title: "School Supplies Drive",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 600,
-      goal: 1200,
-    },
-    {
-      actionId: 6,
-      title: "Food Bank Support",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 700,
-      goal: 1400,
-    },
-    {
-      actionId: 7,
-      title: "Animal Shelter Aid",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 350,
-      goal: 700,
-    },
-    {
-      actionId: 8,
-      title: "Park Renovation",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 800,
-      goal: 1600,
-    },
-    {
-      actionId: 9,
-      title: "Senior Center Activities",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 450,
-      goal: 900,
-    },
-    {
-      actionId: 10,
-      title: "Library Book Fund",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 500,
-      goal: 1000,
-    },
-    {
-      actionId: 11,
-      title: "Youth Sports Equipment",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 600,
-      goal: 1200,
-    },
-    {
-      actionId: 12,
-      title: "Public Art Installation",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 750,
-      goal: 1500,
-    },
-    {
-      actionId: 13,
-      title: "Homeless Shelter Support",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 800,
-      goal: 1600,
-    },
-    {
-      actionId: 14,
-      title: "Recycling Program",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 400,
-      goal: 800,
-    },
-    {
-      actionId: 15,
-      title: "Disaster Relief Fund",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 900,
-      goal: 1800,
-    },
-    {
-      actionId: 16,
-      title: "Wildlife Conservation",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 550,
-      goal: 1100,
-    },
-    {
-      actionId: 17,
-      title: "Community Theater",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 300,
-      goal: 600,
-    },
-    {
-      actionId: 18,
-      title: "Language Classes",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 250,
-      goal: 500,
-    },
-    {
-      actionId: 19,
-      title: "Tech for Seniors",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 1000,
-      goal: 2000,
-    },
-    {
-      actionId: 20,
-      title: "Music Education Program",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 700,
-      goal: 1400,
-    },
-  ];
+
+  const authKey = import.meta.env.VITE_AUTH_TOKEN;
+  const geuUserActionRoute = import.meta.env.VITE_GET_USER_ACTION;
+
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (user === null) {
+    if (!user) {
       navigate("/login");
+      return;
     }
-    setActions(mockActions);
+    const fetchActions = async () => {
+      let response = "";
+      try {
+        response = await fetch(`${geuUserActionRoute}/${user.userId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authToken: authKey,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+      const data = await response.json();
+      if (data.statusCode === 200) {
+        setActions(data.response);
+      } else {
+        setActions(null);
+      }
+    };
+    fetchActions();
   }, [user, navigate]);
 
   const handleLogout = () => {
@@ -203,7 +87,7 @@ const ProfilePage = () => {
                   key={action.actionId}
                   actionId={action.actionId}
                   title={action.title}
-                  image={action.image}
+                  image={action.images[0]}
                   currentAmount={action.currentAmount}
                   goal={action.goal}
                 />

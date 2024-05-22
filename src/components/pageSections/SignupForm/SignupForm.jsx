@@ -1,6 +1,9 @@
-import CryptoJS from "crypto-js";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BiSend } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
+import CryptoJS from "crypto-js";
+import { UserContext } from "../../../context/UserContext";
+import User from "../../../models/User";
 import "../../../style/form.scss";
 
 const SignupForm = () => {
@@ -12,6 +15,12 @@ const SignupForm = () => {
   const [secondName, setSecondName] = useState("");
   const [birthday, setBirthday] = useState("");
   const [userMessage, setUserMessage] = useState("");
+
+  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const authKey = import.meta.env.VITE_AUTH_TOKEN;
+  const signupRoute = import.meta.env.VITE_SIGNUP_ROUTE;
 
   const calculateAge = (birthday) => {
     const birthDate = new Date(birthday);
@@ -53,16 +62,25 @@ const SignupForm = () => {
           authToken: authKey,
         },
         body: JSON.stringify({
-          email: email,
-          password: hashedPassword,
-          firstName: firstName,
-          secondName: secondName,
-          birtday: birthday,
+          email,
+          hashedPassword,
+          username,
+          firstName,
+          secondName,
+          birthday,
         }),
       });
     } catch (error) {
       setUserMessage("Server Connection Error");
       return;
+    }
+    if (response !== null && response.status === 200) {
+      const data = await response.json();
+      const user = new User(data.response.userId, data.response.email);
+      setUser(user);
+      navigate("/profile");
+    } else {
+      setUserMessage("Signup failed");
     }
   };
 

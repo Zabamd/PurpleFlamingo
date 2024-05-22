@@ -8,7 +8,7 @@ const OurGoalsSection = () => {
     <section className="ourGoalsSection">
       <div className="AboutUs">
         <h3>
-          Help People
+          We Help People
           <br /> Achieve their dreams
         </h3>
         <p>

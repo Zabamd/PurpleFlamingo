@@ -10,6 +10,7 @@
     "prettier": "prettier ./src/components/*/*.jsx ./src/routes/*.jsx ./src/*.jsx ./src/components/*/*/*.jsx --write"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^3.4.1",
     "crypto-js": "^4.2.0",
     "react": "^18.2.0",
     "react-currency-input-field": "^3.8.0",

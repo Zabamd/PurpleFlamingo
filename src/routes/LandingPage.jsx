@@ -3,9 +3,8 @@ import Footer from "../components/footer/footer.jsx";
 import LandingImageSection from "../components/pageSections/LandingImageSection/LandingImageSection";
 import OurGoalsSection from "../components/pageSections/OurGoalsSection/OurGoalsSection";
 import ContactUsSection from "../components/pageSections/ContactUsSection/ContactUsSection";
-import FeaturedProjects from "../components/pageSections/FeaturedProjectsSection/FeaturedProjects";
+import HighlightSection from "../components/pageSections/HighlightSection/HighlightSection.js";
 import "../style/page.scss";
-
 const LandingPage = () => {
   return (
     <>
@@ -13,7 +12,7 @@ const LandingPage = () => {
       <main className="pageDefault">
         <LandingImageSection />
         <OurGoalsSection />
-        <FeaturedProjects />
+        <HighlightSection />
         <ContactUsSection />
       </main>
       <Footer />

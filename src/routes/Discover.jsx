@@ -9,19 +9,31 @@ const Discover = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const actionsPerPage = 8;
 
+  const allActionsRoute = import.meta.env.VITE_GET_ALL_ACTION;
+  const authKey = import.meta.env.VITE_AUTH_TOKEN;
+
   useEffect(() => {
     const fetchActions = async () => {
       try {
-        const response = await fetch("/api/actions");
+        const response = await fetch(`${allActionsRoute}`, {
+          headers: {
+            "Content-Type": "application/json",
+            authToken: authKey,
+          },
+        });
         const data = await response.json();
-        setActions(data);
+        if (data.statusCode === 200) {
+          setActions(data.response);
+        } else {
+          console.error("Failed to fetch actions");
+        }
       } catch (error) {
         console.error("Error fetching actions:", error);
       }
     };
     fetchActions();
     setActions(mockActions);
-  }, []);
+  }, [allActionsRoute]);
 
   const indexOfLastAction = currentPage * actionsPerPage;
   const indexOfFirstAction = indexOfLastAction - actionsPerPage;
@@ -33,149 +45,6 @@ const Discover = () => {
   for (let i = 1; i <= Math.ceil(actions.length / actionsPerPage); i++) {
     pageNumbers.push(i);
   }
-
-  const mockActions = [
-    {
-      actionId: 1,
-      title: "Clean the Beach",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 500,
-      goal: 1000,
-    },
-    {
-      actionId: 2,
-      title: "Plant Trees",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 300,
-      goal: 800,
-    },
-    {
-      actionId: 3,
-      title: "Build a Playground",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 200,
-      goal: 1500,
-    },
-    {
-      actionId: 4,
-      title: "Community Garden",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 400,
-      goal: 1000,
-    },
-    {
-      actionId: 5,
-      title: "School Supplies Drive",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 600,
-      goal: 1200,
-    },
-    {
-      actionId: 6,
-      title: "Food Bank Support",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 700,
-      goal: 1400,
-    },
-    {
-      actionId: 7,
-      title: "Animal Shelter Aid",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 350,
-      goal: 700,
-    },
-    {
-      actionId: 8,
-      title: "Park Renovation",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 800,
-      goal: 1600,
-    },
-    {
-      actionId: 9,
-      title: "Senior Center Activities",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 450,
-      goal: 900,
-    },
-    {
-      actionId: 10,
-      title: "Library Book Fund",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 500,
-      goal: 1000,
-    },
-    {
-      actionId: 11,
-      title: "Youth Sports Equipment",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 600,
-      goal: 1200,
-    },
-    {
-      actionId: 12,
-      title: "Public Art Installation",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 750,
-      goal: 1500,
-    },
-    {
-      actionId: 13,
-      title: "Homeless Shelter Support",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 800,
-      goal: 1600,
-    },
-    {
-      actionId: 14,
-      title: "Recycling Program",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 400,
-      goal: 800,
-    },
-    {
-      actionId: 15,
-      title: "Disaster Relief Fund",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 900,
-      goal: 1800,
-    },
-    {
-      actionId: 16,
-      title: "Wildlife Conservation",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 550,
-      goal: 1100,
-    },
-    {
-      actionId: 17,
-      title: "Community Theater",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 300,
-      goal: 600,
-    },
-    {
-      actionId: 18,
-      title: "Language Classes",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 250,
-      goal: 500,
-    },
-    {
-      actionId: 19,
-      title: "Tech for Seniors",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 1000,
-      goal: 2000,
-    },
-    {
-      actionId: 20,
-      title: "Music Education Program",
-      image: "https://via.placeholder.com/150",
-      currentAmount: 700,
-      goal: 1400,
-    },
-  ];
 
   return (
     <>
@@ -189,7 +58,7 @@ const Discover = () => {
                 key={action.actionId}
                 actionId={action.actionId}
                 title={action.title}
-                image={action.image}
+                image={action.images[0]}
                 currentAmount={action.currentAmount}
                 goal={action.goal}
               />
